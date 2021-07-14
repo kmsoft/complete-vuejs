@@ -4,10 +4,11 @@ const app = Vue.createApp({
     <button v-on:click="increment">Increment</button>
     <p>{{ count }}</p>
     <input
-      v-bind:value="value"
-      v-on:input="input"
+      v-model="value"
     />
     <div class="red">{{ error }}</div>
+    <input type="checkbox" v-model="value" value="a"/>
+    <input type="checkbox" v-model="value" value="b"/>
     <div 
       v-for="number in numbers"
       v-bind:class="getClass(number)"
@@ -22,7 +23,7 @@ const app = Vue.createApp({
   data() {
     return {
       count: 0,
-      value: 'user',
+      value: ['a'],
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     }
   },
@@ -38,10 +39,6 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    input($event){
-      this.value = $event.target.value
-    },
-
     increment() {
       this.count += 1
     },
